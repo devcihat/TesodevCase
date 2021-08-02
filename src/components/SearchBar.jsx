@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import DATATESODEV from "../mockData.json";
+import { NavLink } from "react-router-dom"
 
 function SearchBar() {
   const [filter, setFilter] = useState("");
@@ -98,6 +99,7 @@ function SearchBar() {
                     ))}
                   </tbody>
                 </table>
+                <NavLink to='/listpage'>
                 <button onClick={showMore} className="pt-4 mb-4">
                   {dataSearch.length === 0 ? (
                     <p className='text-gray-400'>Not Found</p>
@@ -105,6 +107,8 @@ function SearchBar() {
                     <p>Show More..</p>
                   )}
                 </button>
+                </NavLink>
+               
               </div>
             </div>
           </div>
