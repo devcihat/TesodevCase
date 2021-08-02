@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import SearchBar from "./SearchBar";
 import DATATESODEV from "../mockData.json";
+import Pagination from "./Pagination"
 
 function ListPage() {
   const [filter, setFilter] = useState("");
+  const [visible,setVisible] = useState(6)
 
   const searchText = (event) => {
-    console.log(dataSearch);
+    //console.log(dataSearch);
     setFilter(event.target.value);
   };
 
@@ -35,7 +36,7 @@ function ListPage() {
 
         <button
           className="w-40 mt-9 h-10 text-white  mx-3"
-          style={{ backgroundColor: "#204080" }}
+          style={{ backgroundColor: "#4F75C2" }}
         >
           Search
         </button>
@@ -47,7 +48,7 @@ function ListPage() {
               <div className="shadow overflow-hidden">
                 <table className="min-w-full divide-y mt-3 ">
                   <tbody>
-                    {dataSearch.map((val) => (
+                    {dataSearch.slice(0,visible).map((val) => (
                       <tr className="hover:bg-gray-400 cursor-pointer ">
                         <td className="px-6  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {val[0]}
@@ -65,6 +66,7 @@ function ListPage() {
                     ))}
                   </tbody>
                 </table>
+                <Pagination />
               </div>
             </div>
           </div>
