@@ -2,9 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import DATATESODEV from "../mockData.json";
 import { NavLink } from "react-router-dom"
 
+
 function SearchBar() {
   const [filter, setFilter] = useState("");
   const [visible, setVisible] = useState(3);
+
+
+
 
   const showMore = () => {
     setVisible((prevValue) => prevValue + 3);
