@@ -1,20 +1,29 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import DATATESODEV from "../mockData.json";
 
-function SearchBar(props) {
+function SearchBar() {
+  const [filter, setFilter] = useState("");
+  const [visible, setVisible] = useState(3);
 
-  const [filter,setFilter] = useState('')
+  const showMore = () => {
+    setVisible((prevValue) => prevValue + 3);
+  };
 
   const searchText = (event) => {
-    setFilter(event.target.value)
-  }
+    console.log(dataSearch);
+    setFilter(event.target.value);
+  };
 
-  let dataSearch = DATATESODEV.data.filter(item => {
-    return Object.keys(item).some(key => 
-      item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
-    )
-  })
-  console.log(dataSearch)
+  let dataSearch = DATATESODEV.data.filter((item) => {
+    return Object.keys(item).some((key) =>
+      item[key]
+        .toString()
+        .toLowerCase()
+        .includes(filter.toString().toLowerCase())
+    );
+  });
+
+  // console.log(dataSearch);
 
   return (
     <div class="items-center justify-center flex-1 h-full p-2">
@@ -22,7 +31,7 @@ function SearchBar(props) {
         class="shadow appearance-none border rounded w-full py-3 px-64 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         value={filter}
-        onChange={searchText.bind(this)}
+        onChange={searchText.bind()}
       />
       {/* {console.log("tesodata", DATATESODEV.data[0][2])} */}
 
@@ -71,25 +80,31 @@ function SearchBar(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {dataSearch.slice(0, 3).map((val) => (
-                      <tr>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {dataSearch.slice(0, visible).map((val) => (
+                      <tr className="hover:bg-gray-400 cursor-pointer ">
+                        <td className="px-6  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {val[0]}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6  py-4 whitespace-nowrap text-sm text-gray-500">
                           {val[1]}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6  py-4 whitespace-nowrap text-sm text-gray-500">
                           {val[2]}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6  py-4 whitespace-nowrap text-sm text-gray-500">
                           {val[3]}
                         </td>
-                        <p></p>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+                <button onClick={showMore} className="pt-4 mb-4">
+                  {dataSearch.length === 0 ? (
+                    <p className='text-gray-400'>Not Found</p>
+                  ) : (
+                    <p>Show More..</p>
+                  )}
+                </button>
               </div>
             </div>
           </div>
