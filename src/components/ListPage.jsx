@@ -28,7 +28,7 @@ function ListPage() {
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((val) => {
       return (
-        <tr className="hover:bg-gray-400 cursor-pointer ">
+        <tr key={val} className="hover:bg-gray-400 cursor-pointer ">
           <td className="px-6  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
             {val[0]}
           </td>
@@ -56,7 +56,7 @@ function ListPage() {
         <img className="w-60 p-4" src="../img/tesodev.jpeg" />
 
         <input
-          class="shadow appearance-none border rounded h-14 w-screen mt-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded h-14 w-screen mt-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           value={filter}
           onChange={searchText.bind()}

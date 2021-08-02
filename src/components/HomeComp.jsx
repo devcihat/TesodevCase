@@ -20,13 +20,13 @@ const HomeComp = () => {
   // };
 
   return (
-    <div class="h-screen max-w-2xl mx-auto">
-      <div class="flex">
-        <div class="mx-auto flex ">
-          <div class="w-auto h-auto">
-            <div class="flex-1 h-full">
-              <div class="flex items-center justify-center flex-1 h-full p-2  rounded-full">
-                <div class="relative">
+    <div className="h-screen max-w-2xl mx-auto">
+      <div className="flex">
+        <div className="mx-auto flex ">
+          <div className="w-auto h-auto">
+            <div className="flex-1 h-full">
+              <div className="flex items-center justify-center flex-1 h-full p-2  rounded-full">
+                <div className="relative">
                   <img className="h-64" src="../img/tesodev.jpeg" />
                 </div>
               </div>
@@ -35,10 +35,10 @@ const HomeComp = () => {
         </div>
       </div>
 
-      <div class="flex mt-8">
-        <div class="mx-auto ">
-          <div class="w-auto h-auto">
-            <div class=" h-full">
+      <div className="flex mt-8">
+        <div className="mx-auto ">
+          <div className="w-auto h-auto">
+            <div className=" h-full">
               <SearchBar/>
             </div>
           </div>
